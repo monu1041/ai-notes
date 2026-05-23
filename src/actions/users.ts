@@ -59,8 +59,8 @@ export const signUpAction = async (email: string, password: string) => {
     
 
     return { errorMessage: null };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Sign-up error:", error);
-    return { errorMessage: error.message || "Unknown error" };
+    return handleError(error);
   }
 };

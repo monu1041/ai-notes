@@ -31,14 +31,19 @@ export async function createClient() {
 }
 
 export async function getUser() {
-  const { auth } = await createClient();
+  try {
+    const { auth } = await createClient();
 
-  const { data , error} = await auth.getUser();
+    const { data , error} = await auth.getUser();
 
-  if (error) {
-    console.error(error);
+    if (error) {
+      console.error(error);
+      return null;
+    }
+
+    return data.user;
+  } catch (error) {
+    console.error("Error getting user:", error);
     return null;
   }
-
-  return data.user;
 }

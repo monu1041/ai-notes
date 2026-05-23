@@ -1,0 +1,21 @@
+.bot-response {
+  background: var(--muted);
+  color: var(--muted-foreground);
+  max-width: 60%;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.25rem;
+}
+
+/* small helper to style AI responses coming from server */
+.bot-response p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* ensure textarea and container feel compact in dialog */
+.ask-ai-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
