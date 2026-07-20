@@ -1,6 +1,5 @@
 "use client";
 
-import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,19 +10,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Fragment, useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { Textarea } from "./ui/textarea";
 import { ArrowUpIcon } from "lucide-react";
 import { askAIAboutNotesAction } from "@/actions/notes";
 import "@/styles/ask-ai-button.css";
 
-type Props = {
-  user: User | null;
-};
-
-function AskAIButton({ user }: Props) {
-  const router = useRouter();
-
+function AskAIButton() {
   const [isPending, startTransition] = useTransition();
 
   const [open, setOpen] = useState(false);
@@ -32,16 +24,12 @@ function AskAIButton({ user }: Props) {
   const [responses, setResponses] = useState<string[]>([]);
 
   const handleOnOpenChange = (isOpen: boolean) => {
-    if (!user) {
-      router.push("/login");
-    } else {
-      if (isOpen) {
-        setQuestionText("");
-        setQuestions([]);
-        setResponses([]);
-      }
-      setOpen(isOpen);
+    if (isOpen) {
+      setQuestionText("");
+      setQuestions([]);
+      setResponses([]);
     }
+    setOpen(isOpen);
   };
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -68,7 +56,7 @@ function AskAIButton({ user }: Props) {
     setTimeout(scrollToBottom, 100);
 
     startTransition(async () => {
-      const response = await askAIAboutNotesAction(newQuestions, responses);
+      const response = await askAIAboutNotesAction();
       setResponses((prev) => [...prev, response]);
 
       setTimeout(scrollToBottom, 100);

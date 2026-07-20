@@ -1,6 +1,6 @@
 "use client";
 
-import { Note } from "@prisma/client";
+import { type LocalNote } from "@/lib/local-notes";
 import {
   SidebarGroupContent as SidebarGroupContentShadCN,
   SidebarMenu,
@@ -14,7 +14,7 @@ import SelectNoteButton from "./SelectNoteButton";
 import DeleteNoteButton from "./DeleteNoteButton";
 
 type Props = {
-  notes: Note[];
+  notes: LocalNote[];
 };
 
 function SidebarGroupContent({ notes }: Props) {
