@@ -48,15 +48,20 @@ function AskAIButton() {
   };
 
   const handleSubmit = () => {
-    if (!questionText.trim()) return;
+    const question = questionText.trim();
 
-    const newQuestions = [...questions, questionText];
+    if (!question) return;
+
+    const newQuestions = [...questions, question];
+
     setQuestions(newQuestions);
     setQuestionText("");
+
     setTimeout(scrollToBottom, 100);
 
     startTransition(async () => {
-      const response = await askAIAboutNotesAction(questionText);
+      const response = await askAIAboutNotesAction(question);
+
       setResponses((prev) => [...prev, response]);
 
       setTimeout(scrollToBottom, 100);
