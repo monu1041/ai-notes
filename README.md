@@ -1,6 +1,6 @@
 # AI Notes
 
-AI Notes is a full-stack note-taking application with conversational AI built into the workflow. It helps users create, organize, and interact with notes using Supabase authentication, PostgreSQL storage, Prisma ORM, and OpenAI.
+AI Notes is a full-stack note-taking application with conversational AI built into the workflow. It helps users create, organize, and interact with notes using Supabase authentication, PostgreSQL storage, Prisma ORM, and AI models (OpenAI or Ollama).
 
 ---
 
@@ -44,6 +44,7 @@ The app demonstrates a modern Next.js App Router architecture, secure authentica
 ### AI Integration
 
 * OpenAI API (`gpt-4o-mini` chat completion)
+* Ollama (local LLMs such as `qwen2.5:7b`) for offline, API-free inference
 
 ### Deployment
 
@@ -96,6 +97,10 @@ The app demonstrates a modern Next.js App Router architecture, secure authentica
 
 ![Sign-up page](images/signup.png)
 
+### AI-interaction page
+
+![Sign-up page](images/AI-interaction.png)
+
 ---
 
 ## Local Setup
@@ -133,6 +138,17 @@ npm run dev
 
 ---
 
+### Alternative Local Demo (No Database)
+
+If the hosted PostgreSQL database is unavailable (for example, after inactivity on the free tier), you can try the database-free version of the project.
+
+Checkout the `wihout-prisma-db` branch.
+
+This version:
+- Stores notes locally
+- Does not require Prisma or PostgreSQL
+- Uses Ollama for local AI inference
+
 ## Notes
 
 * The app uses Supabase for authentication, not a custom auth provider.
@@ -151,4 +167,5 @@ Potential enhancements:
 * AI memory and session persistence
 * Team collaboration and shared notebooks
 * Role-based access control
+* Support multiple AI providers (OpenAI, Ollama, etc.)
 
