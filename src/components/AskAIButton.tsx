@@ -56,7 +56,7 @@ function AskAIButton() {
     setTimeout(scrollToBottom, 100);
 
     startTransition(async () => {
-      const response = await askAIAboutNotesAction();
+      const response = await askAIAboutNotesAction(questionText);
       setResponses((prev) => [...prev, response]);
 
       setTimeout(scrollToBottom, 100);
